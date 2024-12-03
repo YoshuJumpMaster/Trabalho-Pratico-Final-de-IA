@@ -50,7 +50,7 @@ Com esse projeto, propomos uma aplicação da IA em um campo ainda pouco explora
 **Objetivo sucinto:** Desenvolver em cima daquilo que desenvolvemos para o primeiro projeto da disicplina um modelo que pudesse obter uma acurácia superior de 80%.
 
 
-**Técnica mais adequada encontrada:** Aprendizado Supervisionado: para classificação ou regressão.
+**Técnica mais adequada encontrada:** Aprendizado Supervisionado: para classificação.
 
 
 **Problema que nos propomos a resovler:** Modelos de IA em contextos de aplicação ligados a música tendem a ter dificuldade no tratamento e processamento de dados dada não só a magnitude dos dados, como também a natureza multi-direcional destes dados.
