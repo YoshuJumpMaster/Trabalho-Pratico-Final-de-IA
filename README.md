@@ -61,7 +61,7 @@ Com esse projeto, propomos uma aplicação da IA em um campo ainda pouco explora
 /////////////////////////////////////////////////////////////
 
 
-# Como nosso modelo de classificação de gêneros musical!
+# Como nosso modelo de classificação de gêneros musical funciona!
 
 ### **1. Extração de Características Importantes do Áudio**
 
