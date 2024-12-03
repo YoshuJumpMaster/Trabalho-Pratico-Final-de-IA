@@ -40,6 +40,21 @@ imagens originais - Uma representação visual para cada arquivo de áudio. Uma 
 /////////////////////////////////////////////////////////////
 
 
+
+# Objetivo a ser alcançado com nosso projeto
+
+
+Com esse projeto, propomos uma aplicação da IA em um campo ainda pouco explorado por assim dizer, o campo da música. Dada sua vasta complexidade e magnitude de dados não diretamente correlacionados entre si, a penetração da IA neste campo tem sido muitas vezes exemplos de desafios modernos para computação, dado o desbalan'ço entre os tipos de problemas que computadores foram projetos para resolver, e a natureza dos problemas musicais, que muitas vezes fogem da lógica de Turing. Ao início do semestre realizamos uma atividade semelhante criando um modelo para classificação de músicas como sendo populares ou não, utilzando neste processo uma base de dados imensa do spotify com diversas variáveis. Neste primeiro projeto, obtivemos uma acurácia baixíssima do modelo, pouco acima de 50%, mas essa experiência acabou tornando-se um pilar para nossa compreensão dos desafios modernos enfrentados pela IA e a computação geral. Além disso, nos permitiu exercer e aprofundar nosso conhecimentos e entendimentos sobre o tema, nos permitindo então realizar neste segundo projeto um plano de atacar novamente um problema músical, mas dessa vez, usando uma estratégia que favoreça a lógica do modelo e princípios computacionais. Nessa linha de pensamento, nos propomos a desenvovler um modelo de classificação de gênero musical baseado em aprendizado supervisionado, que faria uso de espectogramas e MFCCs para discernimento de padrões no dataset.
+
+
+**Objetivo sucinto:** Desenvolver em cima daquilo que desenvolvemos para o primeiro projeto da disicplina um modelo que pudesse obter uma acurácia superior de 80%
+
+
+
+
+/////////////////////////////////////////////////////////////
+
+
 # Como nosso modelo de classificação de gêneros musical!
 
 ### **1. Extração de Características Importantes do Áudio**
