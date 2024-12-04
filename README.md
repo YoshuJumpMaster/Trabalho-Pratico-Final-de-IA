@@ -60,28 +60,41 @@ Com esse projeto, propomos uma aplicação da IA em um campo ainda pouco explora
 
 /////////////////////////////////////////////////////////////
 
+# Como nosso modelo de classificação de gêneros musicais funciona!
 
-# Como nosso modelo de classificação de gêneros musical funciona!
-
-### **1. Extração de Características Importantes do Áudio**
+### **1. Extração de características importantes do áudio**
 
 A música que ouvimos é um arquivo MP3 em formato de aúdio. Todavia, precisamos transformar esse som em dados que o computador possa entender e processar. Fazemos isso através da **extração de características**:
 
 - **MFCCs (Coeficientes Cepstrais de Frequência Mel):** São valores que representam as características mais importantes do áudio. Eles capturam informações sobre as frequências que contituem aquela música e como elas variam ao longo do tempo. Esses MFCCs podem ser interpretados como uma "impressão digital" sonora da música.
 
+Ao fim do notebook 3, adotamos uma estratégia no desenvolvimento do nosso modelo para aumentar significativamente nossa acurácia, nesse sentido, desenvolvemos um modelo melhorado com **CNNs**. Para aplicar o modelo CNN decidimos representar a música de forma visual através de **espectrogramas** ou **mel-espectrogramas**, que são basicamente formas de transformar as características do áudio em imagens que possam ser visualizadas e com isso entender como as frequências variam ao longo do tempo. Com isso, aproveitamos da vantagem da rede neural convulocional em ser ótima para reconhecer padrões visuais e convertemos o aúdio para um formato que pudesse aproveitar desta vantagem.
+
 ### **2. Preparação dos Dados para o Modelo**
+
 
 Depois de extrair esses MFCCs, organizamos os dados de forma que o modelo possa ser alimentado por eles:
 
 - **Segmentação:** Dividimos a música em pequenos pedaços (segmentos) para capturar variações ao longo da música.
 
-- **Normalização:** Ajustamos os valores dos dados para que fiquem em uma mesma escala, facilitando o aprendizado do modelo.
+- **Normalização:** Ajustamos os valores dos dados e espectogramas para que fiquem em uma mesma escala, facilitando o aprendizado do modelo.
 
-### **3. Treinamento do Modelo de Rede Neural**
+- **Redimensionamento das Imagens:** Para que o modelo conseguisse processar as imagens corretamente, os espectrogramas foram redimensionados para um tamanho padrão, garantindo que todas imagens usadas para alimentar o modelo tivessem a mesma dimensão.
+
+
+
+
+### **3. Treinamento do Modelo de Rede Neural Convolucional (CNN)**
+
+
 
 Utilizamos os dados preparados para treinar o modelo.
 
-- **Aprendizado de Padrões:** O modelo analisa os MFCCs de várias músicas e aprende a associar certos padrões sonoros evidenciados pelos MFCC a gêneros musicais específicos. Por exemplo, pode aprender que músicas de rock têm padrões diferentes da músicas de jazz.
+- **Aprendizado de Padrões:** O modelo analisa os MFCCs e espectogramas de várias músicas e aprende a associar certos padrões sonoros evidenciados pelos MFCC a gêneros musicais específicos. Por exemplo, pode aprender que músicas de rock têm padrões diferentes da músicas de jazz.
+
+- **Arquitetura da CNN:** Nosso modelo melhorado, o CNN usa **camadas convolucionais** para identificar características locais, **camadas de pooling** para reduzir a dimensionalidade das imagens e **camadas densas** para interpretar as informações extraídas pelas camadas convolucionais e a partir delas fazer a previsão do gênero. Por último, a **camada de saída**, gera as predições finais.
+
+
 
 ### **4. Classificação de Novas Músicas**
 
@@ -89,17 +102,26 @@ Para classificar uma nova música, o modelo passa pelo fluxo abaixo:
 
 1. **Extração de MFCCs:** Aplica-se o mesmo processo de extração de MFCCs na nova música.
 
-2. **Entrada no Modelo:** Fornecemos esses MFCCs ao modelo.
+2. **Pré-processamento:** Aplicamos o pré-processamento, consistindo de normalizar e redimensionar os dados , para garantir que a imagem seja compatível com o que a CNN foi treinada para entender.
 
-3. **Previsão do Gênero:** O modelo analisa os padrões nos MFCCs e calcula a probabilidade de a música pertencer a cada um dos gêneros no qual foi treinado.
+3. **Entrada no Modelo:** Fornecemos os MFCCs e espectogramas aos modelos.
+
+4. **Previsão do Gênero:** O modelo analisa os padrões nos MFCCs e espectogramas e calcula a probabilidade de a música pertencer a cada um dos gêneros no qual foi treinado.
+
+
 
 ### **Por que Funciona?!**
 
-- **Padrões Sonoros:** Cada gênero musical possui características sonoras únicas e especiais. Dessa forma, nosso modelo é capaz de aprender a identificar essas características nos dados que fornecemos a ele.
-
+- **Padrões Sonoros e Visuais:** Cada gênero musical tem características sonoras únicas que por sua vez são manifestadas visualmente nos espectrogramas. A CNN em particular é ótima em detectar esses padrões e associá-los a um gênero específico, mas os outros modelos que aplicamos também fazem isso através dos MFCCs.
+  
 - **Aprendizado:** O modelo vai ajustando seus parâmetros para melhorar a precisão das previsões com base nos dados que foi alimentado. Assim sendo, quanto maior a gama de dados que fornecemos para alimentar o modelo, melhor.
 
+
+
+
 ### **Resumo**
+
+
 
 Em resumo, o processo é:
 
@@ -111,6 +133,7 @@ Em resumo, o processo é:
 
 
 Poe analogia, podemos abstrair este processo para como se fosse ensinar alguém a diferenciar estilos musicais mostrando exemplos e destacando características típicas de cada gênero. 
+
 
 
 
